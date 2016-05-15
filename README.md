@@ -1,8 +1,6 @@
-# OauthAdapter
+# OAuthAdapter
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/oauth_adapter`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+It provides a simple method to use the OAuth libraries.
 
 ## Installation
 
@@ -16,13 +14,46 @@ And then execute:
 
     $ bundle
 
-Or install it yourself as:
+## Configuration
 
-    $ gem install oauth_adapter
+
+```ruby
+OAuthAdapter.configure do
+  provider :twitter, ENV['TWITTER_KEY'], ENV['TWITTER_SECRET'], 'https://api.twitter.com'
+  provider :github, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET'], 'https://api.github.com'
+end
+```
+
+### OmniAuth Support
+
+If you use with [intridea/omniauth](https://github.com/intridea/omniauth), you may omit the configuration by requiring 'oauth_adapter/omniauth'. This is an example at `config/initializers/omniauth.rb`:
+
+
+```ruby
+require 'oauth_adapter/omniauth'
+
+Rails.application.config.middleware.use OmniAuth::Builder do
+  provider :developer unless Rails.env.production?
+  provider :twitter, ENV['TWITTER_KEY'], ENV['TWITTER_SECRET']
+  provider :github, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET']
+end
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+You will get either appropriate object of OAuth or OAuth2.
+
+```ruby
+OAuthAdapter.get_access_token(provider: :github, token: '<access_token>')
+#=> #<OAuth2::AccessToken:0x007f9d763e5b50...
+OAuthAdapter.get_access_token(provider: :twitter, token: '<access_token>', secret: '<token_secret>')
+#=> #<OAuth::AccessToken:0x007f9d763d5430...
+```
+
+If you want to know how to use the `AccessToken` object, you should read to the documentation for each libraries.
+
+- [oauth-xx/oauth](https://github.com/oauth-xx/oauth-ruby)
+- [intridea/oauth2](https://github.com/intridea/oauth2).
 
 ## Development
 
@@ -32,7 +63,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/oauth_adapter. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/sinsoku/oauth_adapter. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License
