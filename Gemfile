@@ -4,3 +4,4 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'omniauth'
+gem 'codecov', require: false
