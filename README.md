@@ -1,5 +1,8 @@
 # OAuthAdapter
 
+[![Build Status](https://travis-ci.org/sinsoku/oauth_adapter.svg?branch=master)](https://travis-ci.org/sinsoku/oauth_adapter)
+[![codecov](https://codecov.io/gh/sinsoku/oauth_adapter/branch/master/graph/badge.svg)](https://codecov.io/gh/sinsoku/oauth_adapter)
+
 It provides a simple method to use the OAuth libraries.
 
 ## Installation
