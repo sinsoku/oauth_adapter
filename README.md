@@ -1,5 +1,6 @@
 # OAuthAdapter
 
+[![Gem Version](https://badge.fury.io/rb/oauth_adapter.svg)](https://badge.fury.io/rb/oauth_adapter)
 [![Build Status](https://travis-ci.org/sinsoku/oauth_adapter.svg?branch=master)](https://travis-ci.org/sinsoku/oauth_adapter)
 [![codecov](https://codecov.io/gh/sinsoku/oauth_adapter/branch/master/graph/badge.svg)](https://codecov.io/gh/sinsoku/oauth_adapter)
 
